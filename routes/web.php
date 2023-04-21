@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PersonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(PersonController::class)->group(function () {
+    Route::get('/persons', 'index');
+    Route::get('/persons/{id}', 'show');
+    Route::post('/persons', 'store')->name('persons.store');
+    Route::put('/persons/{person}', 'update')->name('persons.update');
+    Route::delete('/persons/{person}', 'destroy')->name('persons.delete');
 });
