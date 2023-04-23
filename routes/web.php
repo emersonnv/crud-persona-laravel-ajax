@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\CalculatorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::controller(CalculatorController::class)->group(function () {
+    Route::get('/calculator', 'index');
+    Route::post('/calculator/sum', 'sum')->name('calculator.sum');
 });
 
 Route::controller(PersonController::class)->group(function () {

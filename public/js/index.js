@@ -31,7 +31,7 @@ btnAdd.addEventListener("click", _ => {
             let formData = JSON.stringify(person);
             let form = document.getElementById('formPerson');
             let xhr = new XMLHttpRequest();
-            xhr.open("POST", form.action);
+            xhr.open("POST", '/persons');
             xhr.setRequestHeader('Content-type', 'application/json');
             xhr.send(formData);
             xhr.onload = function (e) {
@@ -134,7 +134,7 @@ function updatePerson() {
 
     let formData = JSON.stringify(person);
     let xhr = new XMLHttpRequest();
-    xhr.open("PUT", 'http://0.0.0.0/persons/' + inputId.value);
+    xhr.open("PUT", '/persons/' + inputId.value);
     xhr.setRequestHeader('Content-type', 'application/json');
     xhr.send(formData);
     xhr.onload = function (e) {
@@ -173,7 +173,7 @@ function updatePerson() {
 
 function deletePerson(id) {
     let xhr = new XMLHttpRequest();
-    xhr.open("DELETE", 'http://0.0.0.0/persons/' + id);
+    xhr.open("DELETE", '/persons/' + id);
     xhr.setRequestHeader('Content-type', 'application/json');
     xhr.send();
     xhr.onload = function (e) {
