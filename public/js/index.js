@@ -40,11 +40,11 @@ btnAdd.addEventListener("click", _ => {
                 if(response.success){
                     alertSuccess.innerHTML = response.data
                     alertSuccess.removeAttribute("hidden");
-                    
+
                     setTimeout(() => {
                         alertSuccess.setAttribute("hidden", "");
                     }, 2000);
-                    
+
                     person.id = response.id;
                     persons.push(person);
                     localStorage.setItem("Persons", JSON.stringify(persons));
@@ -53,7 +53,7 @@ btnAdd.addEventListener("click", _ => {
                 } else {
                     alertError.innerHTML = response.data
                     alertError.removeAttribute("hidden");
-    
+
                     setTimeout(() => {
                         alertError.setAttribute("hidden", "");
                     }, 2000);
@@ -108,7 +108,7 @@ function clearForm() {
 }
 function getPersonInformation(id) {
     const person = persons.find((p) => p.id == id);
-    
+
     inputId.value = person.id
     inputName.value = person.name
     inputLastName.value = person.lastname
@@ -143,17 +143,17 @@ function updatePerson() {
         if(response.success){
             alertSuccess.innerHTML = response.data
             alertSuccess.removeAttribute("hidden");
-            
+
             setTimeout(() => {
                 alertSuccess.setAttribute("hidden", "");
             }, 2000);
-            
+
             const index = persons.findIndex(p => p.id == person.id);
 
             if (index !== -1) {
                 persons[index] = person;
             }
-            
+
             displayPerson()
             localStorage.setItem("Persons", JSON.stringify(persons))
             btnAdd.classList.replace("btn-warning", "btn-success")
@@ -168,7 +168,7 @@ function updatePerson() {
             }, 2000);
         }
     }
-            
+
 }
 
 function deletePerson(id) {
@@ -182,11 +182,11 @@ function deletePerson(id) {
         if(response.success){
             alertSuccess.innerHTML = response.data
             alertSuccess.removeAttribute("hidden");
-            
+
             setTimeout(() => {
                 alertSuccess.setAttribute("hidden", "");
             }, 2000);
-            
+
             const indexAEliminar = persons.findIndex(p => p.id == id);
             persons.splice(indexAEliminar, 1)
             displayPerson()
